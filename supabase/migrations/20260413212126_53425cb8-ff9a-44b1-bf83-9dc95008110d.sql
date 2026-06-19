@@ -1,0 +1,1 @@
+ALTER TABLE public.peladas ADD COLUMN IF NOT EXISTS is_live boolean NOT NULL DEFAULT false;

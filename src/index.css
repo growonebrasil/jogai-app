@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* JOGA.I. Premium Dark Theme — #121212 base, #0FA958 accent */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 153 84% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 17%;
+    --muted-foreground: 0 0% 48%;
+
+    --accent: 43 76% 52%;
+    --accent-foreground: 0 0% 7%;
+
+    --destructive: 4 74% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 45 100% 51%;
+    --warning-foreground: 0 0% 7%;
+
+    --success: 153 84% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 14%;
+    --ring: 153 84% 36%;
+
+    --radius: 0.75rem;
+
+    /* Custom JOGA.I. tokens */
+    --glow-primary: 0 0 20px hsl(153 84% 36% / 0.25);
+    --glow-primary-strong: 0 0 30px hsl(153 84% 36% / 0.4);
+    --glow-gold: 0 0 20px hsl(43 76% 52% / 0.3);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 12%) 0%, hsl(0 0% 9%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 9%) 0%, hsl(0 0% 6%) 100%);
+    --glass-card: hsl(0 0% 11% / 0.85);
+    --glass-border: hsl(0 0% 100% / 0.07);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 153 84% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 17%;
+    --sidebar-ring: 153 84% 36%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rajdhani', sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Player Card Styles */
+  .player-card {
+    @apply relative overflow-hidden rounded-xl;
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .player-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-50;
+    background: radial-gradient(ellipse at top, hsl(var(--primary) / 0.1) 0%, transparent 50%);
+  }
+
+  .player-rating {
+    font-family: 'Rajdhani', sans-serif;
+    @apply text-5xl font-bold;
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: var(--glass-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    @apply rounded-xl;
+  }
+
+  /* Gaming card with glow on hover */
+  .gaming-card {
+    @apply relative overflow-hidden rounded-xl transition-all duration-300;
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .gaming-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none;
+    background: radial-gradient(ellipse at top, hsl(var(--primary) / 0.08) 0%, transparent 70%);
+  }
+
+  .gaming-card:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: var(--glow-primary);
+  }
+
+  .gaming-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-primary-strong {
+    box-shadow: var(--glow-primary-strong);
+  }
+
+  .glow-gold {
+    box-shadow: var(--glow-gold);
+  }
+
+  /* Neon text glow */
+  .text-glow-primary {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5), 0 0 30px hsl(var(--primary) / 0.2);
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 10px hsl(var(--accent) / 0.5), 0 0 30px hsl(var(--accent) / 0.2);
+  }
+
+  /* Status badges */
+  .status-live {
+    @apply bg-destructive/20 text-destructive border border-destructive/30;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .status-confirmed {
+    @apply bg-success/20 text-success border border-success/30;
+  }
+
+  /* HUD-style scanline effect */
+  .hud-scanline::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--primary) / 0.02) 2px,
+      hsl(var(--primary) / 0.02) 4px
+    );
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--destructive) / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 15px hsl(var(--destructive) / 0.8);
+    }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .shimmer-border {
+    position: relative;
+  }
+
+  .shimmer-border::after {
+    content: '';
+    @apply absolute inset-0 rounded-xl pointer-events-none;
+    background: linear-gradient(
+      90deg,
+      transparent 30%,
+      hsl(var(--primary) / 0.1) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-glass {
+    background: var(--glass-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

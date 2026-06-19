@@ -1,0 +1,7 @@
+project_id = "mrgtdryzbaycmjtcbohf"
+
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.request-account-deletion]
+verify_jwt = true

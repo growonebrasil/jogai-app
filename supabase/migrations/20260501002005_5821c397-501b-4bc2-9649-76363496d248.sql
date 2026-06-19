@@ -1,0 +1,1 @@
+UPDATE public.profiles SET plan_type = 'demo' WHERE user_id = '98377b4d-eea6-4f56-8a8c-4f48ba3fa6dd';

@@ -1,0 +1,16 @@
+{
+  "name": "JOGA.I — Futebol Inteligente",
+  "short_name": "JOGA.I",
+  "description": "Organize peladas, monte times equilibrados com IA e acompanhe estatísticas reais.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#121212",
+  "theme_color": "#0FA958",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
