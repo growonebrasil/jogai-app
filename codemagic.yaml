@@ -3,6 +3,7 @@ workflows:
     name: JOGA.I Android Build
     environment:
       node: 22
+      java: 21
     scripts:
       - npm install
       - npm run build
