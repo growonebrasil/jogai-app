@@ -1,29 +1,14 @@
 workflows:
-jogai_android:
-  name: JOGA.I Android Build
-
-  environment:
-    node: 22
-
-  scripts:
-    - npm install
-    - npm run build
-    - npx cap sync android
-    - chmod +x android/gradlew
-    - cd android && ./gradlew assembleRelease
-
-  artifacts:
-    - android/app/build/outputs/**/*.apk
-    - android/app/build/outputs/**/*.aab
-    
-  jogai_ios:
-    name: JOGA.I iOS Build
+  jogai_android:
+    name: JOGA.I Android Build
     environment:
       node: 22
-      xcode: latest
     scripts:
       - npm install
       - npm run build
-      - npx cap sync ios
+      - npx cap sync android
+      - chmod +x android/gradlew
+      - cd android && ./gradlew assembleRelease
     artifacts:
-      - build/ios/ipa/*.ipa
+      - android/app/build/outputs/**/*.apk
+      - android/app/build/outputs/**/*.aab
