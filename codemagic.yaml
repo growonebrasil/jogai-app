@@ -1,0 +1,32 @@
+workflows:
+  jogai_android:
+    name: JOGA.I Android Build
+
+    environment:
+      node: 20
+
+    scripts:
+      - npm install
+      - npm run build
+      - npx cap sync android
+
+    artifacts:
+      - android/app/build/outputs/**/*.apk
+      - android/app/build/outputs/**/*.aab
+
+  jogai_ios:
+    name: JOGA.I iOS Build
+
+    environment:
+      node: 20
+      xcode: latest
+
+    scripts:
+      - npm install
+      - npm run build
+      - npx cap sync ios
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+
+      

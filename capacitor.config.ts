@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'br.com.growone.jogai',
   appName: 'JOGA.I',
   webDir: 'dist',
-  bundledWebRuntime: false,
+ 
   server: {
     url: 'https://jogaiapp.lovable.app',
     cleartext: false,
