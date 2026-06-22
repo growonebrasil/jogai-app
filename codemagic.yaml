@@ -3,7 +3,7 @@ workflows:
     name: JOGA.I Android Build
 
     environment:
-      node: 20
+      node: 22
 
     scripts:
       - npm install
@@ -18,7 +18,8 @@ workflows:
     name: JOGA.I iOS Build
 
     environment:
-      node: 20
+      node: 22
+  
       xcode: latest
 
     scripts:
@@ -29,4 +30,5 @@ workflows:
     artifacts:
       - build/ios/ipa/*.ipa
 
-      
+
+
