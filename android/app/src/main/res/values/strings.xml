@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">JOGA.I</string>
+    <string name="title_activity_main">JOGA.I</string>
+    <string name="package_name">br.com.growone.jogai</string>
+    <string name="custom_url_scheme">br.com.growone.jogai</string>
+</resources>
