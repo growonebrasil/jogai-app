@@ -23,7 +23,9 @@ workflows:
       - npm install
       - npm run build
       - npx cap sync ios
+      - find ios -maxdepth 5 -print
       - xcode-project use-profiles
-      - xcode-project build-ipa --project "ios/App.xcodeproj/project.pbxproj" --scheme "App"
+      - xcode-project build-ipa --project "ios/App/App.xcodeproj" --scheme "App"
     artifacts:
       - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
