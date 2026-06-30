@@ -14,20 +14,16 @@ workflows:
       - android/app/build/outputs/**/*.apk
       - android/app/build/outputs/**/*.aab
 
-    jogai_ios:
+  jogai_ios:
     name: JOGA.I iOS Build
     environment:
       node: 22
       xcode: latest
-      vars:
-        XCODE_PROJECT: "ios/App.xcodeproj"
-        XCODE_SCHEME: "App"
-        BUNDLE_ID: "br.com.growone.jogai"
     scripts:
       - npm install
       - npm run build
       - npx cap sync ios
       - xcode-project use-profiles
-      - xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
+      - xcode-project build-ipa --project "ios/App.xcodeproj" --scheme "App"
     artifacts:
       - build/ios/ipa/*.ipa
