@@ -20,7 +20,7 @@ workflows:
       node: 22
       xcode: latest
       vars:
-        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
+        XCODE_WORKSPACE: "ios/App.xcodeproj/project.xcworkspace"
         XCODE_SCHEME: "App"
         BUNDLE_ID: "br.com.growone.jogai"
     scripts:
