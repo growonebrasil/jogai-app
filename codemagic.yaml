@@ -19,11 +19,13 @@ workflows:
     environment:
       node: 22
       xcode: latest
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: br.com.growone.jogai
     scripts:
       - npm install
       - npm run build
       - npx cap sync ios
-      - find ios -maxdepth 5 -print
       - xcode-project use-profiles
       - xcode-project build-ipa --project "ios/App/App.xcodeproj" --scheme "App"
     artifacts:
