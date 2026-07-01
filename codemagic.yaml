@@ -16,6 +16,8 @@ workflows:
 
   jogai_ios:
     name: JOGA.I iOS Build
+    integrations:
+      app_store_connect: JOGAI Codemagic
     environment:
       node: 22
       xcode: latest
