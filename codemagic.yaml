@@ -9,7 +9,9 @@ workflows:
       - npm run build
       - npx cap sync android
       - chmod +x android/gradlew
-      - cd android && ./gradlew assembleRelease
+      - cd android
+      - /gradlew assembleRelease
+      - /gradlew bundleRelease
     artifacts:
       - android/app/build/outputs/**/*.apk
       - android/app/build/outputs/**/*.aab
