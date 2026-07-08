@@ -1,5 +1,5 @@
 workflows:
-    jogai_android:
+  jogai_android:
     name: JOGA.I Android Build
     environment:
       node: 22
