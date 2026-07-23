@@ -4,6 +4,7 @@ workflows:
     environment:
       node: 22
       java: 21
+
     scripts:
       - npm install
       - npm run build
@@ -11,29 +12,39 @@ workflows:
       - chmod +x android/gradlew
       - cd android && ./gradlew assembleRelease
       - cd android && ./gradlew bundleRelease
+
     artifacts:
       - android/app/build/outputs/**/*.apk
       - android/app/build/outputs/**/*.aab
 
   jogai_ios:
     name: JOGA.I iOS Build
+
     integrations:
       app_store_connect: JOGAI Codemagic
+
     environment:
+      groups:
+        - app_secrets
+
       node: 22
       xcode: latest
+
       ios_signing:
         distribution_type: app_store
         bundle_identifier: br.com.growone.jogai
+
     scripts:
       - npm install
       - npm run build
       - npx cap sync ios
       - xcode-project use-profiles
       - xcode-project build-ipa --project "ios/App/App.xcodeproj" --scheme "App"
+
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
+
     publishing:
       app_store_connect:
         auth: integration
